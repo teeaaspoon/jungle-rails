@@ -132,5 +132,15 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## USERS
+
+user1 = User.find_or_create_by!({first_name: "James", last_name: "Dymond", email: "james.dymond@gmail.com", password_digest: "$2a$10$rxHJUPH6dx6WOIpojkp1suPbyq2HE72OuQkhXp7iNQFIb.t6i2TUK"})
+
+## REVIEWS
+user1.reviews.create!({product_id:1, description:"This product is amazing!", rating: 5})
+user1.reviews.create!({product_id:2, description:"This product is trash!", rating: 1})
+user1.reviews.create!({product_id:3, description:"This product is okay!", rating: 3})
+user1.reviews.create!({product_id:4, description:"This product is decent!", rating: 4})
+
 
 puts "DONE!"
