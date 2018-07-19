@@ -13,7 +13,7 @@
         <% flash.each do |key, value|
             value.each do |value| %>
         <ul>
-          <li><%= content_tag(:p, value, :class => "flash #{key}") unless value.empty? %></li>
+          <%= content_tag(:li, value, :class => "flash #{key}") unless value.empty? %>
         </ul>
       <% end %>
       <% end %>
