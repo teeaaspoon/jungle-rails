@@ -7,18 +7,16 @@
 
     <%= form_for @user, url: '/users' do |form| %>
 
-    <% if flash["error"] %>
-      <div class="alert alert-danger">
-      <strong>The following errors prevented saving:</strong>
-        <% flash.each do |key, value|
-            value.each do |value| %>
-        <ul>
-          <%= content_tag(:li, value, :class => "flash #{key}") unless value.empty? %>
-        </ul>
-      <% end %>
-      <% end %>
-      </div>
-    <% end %>
+    <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <div class="form-group">
           <%= form.label :first_name %>
