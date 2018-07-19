@@ -138,6 +138,7 @@ user1 = User.find_or_create_by!({first_name: "James", last_name: "Dymond", email
 
 ## REVIEWS
 user1.reviews.create!({product_id:1, description:"This product is amazing!", rating: 5})
+user1.reviews.create!({product_id:1, description:"This product is so amazing that I had to buy another!", rating: 5})
 user1.reviews.create!({product_id:2, description:"This product is trash!", rating: 1})
 user1.reviews.create!({product_id:3, description:"This product is okay!", rating: 3})
 user1.reviews.create!({product_id:4, description:"This product is decent!", rating: 4})
