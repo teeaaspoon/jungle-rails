@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
         if @review.save
             redirect_to :back
         else
-            render :back
+            redirect_to :back
         end
     end
 

@@ -27,6 +27,7 @@
 
         <div class="jumbotron">
          <% if @reviews.length > 0%>
+         <% @rating_sum = 0 %>
           <p>Reviews</p>
           <table class="table table-bordered">
             <thead>
@@ -43,6 +44,7 @@
               <% end %>
             </tbody>
           </table>
+          <p>Average Rating: <%= (@rating_sum.to_f/@reviews.length*2.0).round/2.0 %></p>
 
           <% else %>
             <p>No Reviews Yet</p>
