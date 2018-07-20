@@ -3,7 +3,8 @@
     <td><%= review.description %></td>
     <td><%= review.user.first_name + " " + review.user.last_name%></td>
     <td><%= review.created_at.strftime('%Y-%m-%d') %></td>
-    <% if review.user.id == current_user.id %>
-        <td>Delete</td>
+    <% if current_user.present? && review.user.id == current_user.id %>
+        <td><%= link_to "Delete", delete_review_path(review_id: review.id), class: 'btn btn-xs btn-danger', method: :delete %></td>
+        
     <% end %>
 </tr>

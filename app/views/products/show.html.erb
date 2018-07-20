@@ -26,6 +26,7 @@
         </dl>
 
         <div class="jumbotron">
+         <% if @reviews.length > 0%>
           <p>Reviews</p>
           <table class="table table-bordered">
             <thead>
@@ -42,32 +43,39 @@
               <% end %>
             </tbody>
           </table>
+
+          <% else %>
+            <p>No Reviews Yet</p>
+          <% end %>
+          
           <br>
-          <p>Submit a review for this product</p>
-          <%= form_for [@product, @review] do |form| %>
+          <% if current_user.present? %>
+            <p>Submit a review for this product</p>
+            <%= form_for [@product, @review] do |form| %>
 
-            <% if form.object.errors.any? %>
-            <div class="alert alert-danger">
-              <strong>The following errors prevented saving:</strong>
-              <ul>
-                <% form.object.errors.full_messages.each do |error| %>
-                  <li><%= error %></li>
-                <% end %>
-              </ul>
-            </div>
+              <% if form.object.errors.any? %>
+              <div class="alert alert-danger">
+                <strong>The following errors prevented saving:</strong>
+                <ul>
+                  <% form.object.errors.full_messages.each do |error| %>
+                    <li><%= error %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <% end %>
+
+                <div class="form-group">
+                  <%= form.label :rating %>
+                  <%= form.select :rating, [1, 2, 3, 4, 5] %>
+                </div>
+
+                <div class="form-group">
+                  <%= form.label :description %>
+                  <%= form.text_area :description, class: 'form-control' %>
+                </div>
+
+              <%= form.submit 'Submit', class: 'btn btn-primary' %>
             <% end %>
-
-              <div class="form-group">
-                <%= form.label :rating %>
-                <%= form.select :rating, [1, 2, 3, 4, 5] %>
-              </div>
-
-              <div class="form-group">
-                <%= form.label :description %>
-                <%= form.text_area :description, class: 'form-control' %>
-              </div>
-
-            <%= form.submit 'Submit', class: 'btn btn-primary' %>
           <% end %>
 
             
