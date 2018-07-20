@@ -35,11 +35,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>5</td>
-                <td>This is cool</td>
-                <td>- JD</td>
-              </tr>
+              <% @reviews.each do |review| %>
+                <%= render 'comment', review: review %>
+              <% end %>
             </tbody>
           </table>
         </div>
