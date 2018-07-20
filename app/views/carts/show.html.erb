@@ -4,8 +4,6 @@
     <h1>My Cart</h1>
   </header>
 
-<% if current_user %>
-
     <% if cart.length > 0 %>
 
     <div class="panel panel-default items">
@@ -38,7 +36,7 @@
     </div>
 
     
-
+  <% if current_user.present? %>
     <div class="row">
       <div class="col-xs-12">
         <%= form_tag orders_path do %>
@@ -55,6 +53,24 @@
         <% end %>
       </div>
     </div>
+    <% else %>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= form_tag orders_path do %>
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-amount="<%= @cart_total * 100 %>"
+              data-name="Jungle"
+              data-description=" Visitor's Jungle Order"
+              data-locale="auto"
+              data-email="vistor@jungle.com"
+              data-currency="cad">
+            </script>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
     <% else %>
       <div class="order-summary jumbotron">
@@ -63,11 +79,5 @@
       <%= link_to "Continue Shopping", root_path, class: "btn btn-primary" %>
     <% end %>
 
-  <% else %>
-  <div class="order-summary jumbotron">
-    <h4>Please Sign Up or Sign In</h4>
-  </div>
-
-  <% end %>
 
 </section>
