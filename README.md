@@ -27,3 +27,7 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 -   Stripe
 
 ## Screenshots
+
+!["Screenshot of Main Product Page"](https://github.com/teeaaspoon/jungle-rails/blob/master/docs/front_page.png)
+!["Screenshot of Product Reviews"](https://github.com/teeaaspoon/jungle-rails/blob/master/docs/product_review_page.png)
+!["Screenshot of Admin Panel"](https://github.com/teeaaspoon/jungle-rails/blob/master/docs/admin_page.png)
