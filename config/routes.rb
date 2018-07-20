@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :new, :create]
   end
 
+  resources :products, only: [:show] do
+    resources :reviews, only: [:create]
+  end
+
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
