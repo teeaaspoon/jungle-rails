@@ -54,7 +54,13 @@ class OrdersController < ApplicationController
         )
       end
     end
-    order.save!
+    if order.save!
+      order.line_items.each do |item|
+        product = Product.find_by(id: item.product_id)
+        product.quantity = product.quantity - item.quantity
+        product.save!
+      end
+    end
     order
   end
 
