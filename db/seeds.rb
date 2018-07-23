@@ -134,7 +134,8 @@ cat3.products.create!({
 
 ## USERS
 
-user1 = User.find_or_create_by!({first_name: "James", last_name: "Dymond", email: "james.dymond@gmail.com", password_digest: "$2a$10$rxHJUPH6dx6WOIpojkp1suPbyq2HE72OuQkhXp7iNQFIb.t6i2TUK"})
+user1 = User.new({first_name: "James", last_name: "Dymond", email: "james.dymond@gmail.com", password: "123", password_confirmation: "123"})
+user1.save!
 
 ## REVIEWS
 user1.reviews.create!({product_id:1, description:"This product is amazing!", rating: 5})
