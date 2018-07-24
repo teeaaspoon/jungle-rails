@@ -48,6 +48,9 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do
